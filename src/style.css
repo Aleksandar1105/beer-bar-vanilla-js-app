@@ -1,0 +1,291 @@
+@import url("https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Heebo", sans-serif;
+}
+
+/* ================== HEADER ================== */
+#header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10rem;
+}
+
+/* ========= navbar ========= */
+
+nav {
+  position: fixed;
+  background-color: #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 80vw;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+}
+
+.nav-item a {
+  display: inline-block;
+  padding-left: 3rem;
+  text-decoration: none;
+  color: black;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.nav-links .nav-item:nth-of-type(1) a {
+  font-weight: 500;
+  font-size: 1.8em;
+}
+
+.nav-links .nav-item:nth-of-type(3) a {
+  color: #626d7c;
+}
+
+.nav-item a:hover {
+  box-shadow: 0 8px 6px -6px black;
+  transition: 100ms;
+}
+
+.nav-form {
+  padding: 3px 3rem;
+  color: white;
+}
+
+[placeholder*="Search"] {
+  border: none;
+  border-radius: 5px;
+  padding: 1rem 3rem;
+  padding-left: 1.5rem;
+  margin-right: 1rem;
+  color: #626d7c;
+  font-weight: 400;
+  font-size: 1.6rem;
+}
+
+[name*="SearchBtn"] {
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 1rem 3rem;
+  color: #626d7c;
+  font-weight: 400;
+  font-size: 1.6rem;
+}
+
+[name*="SearchBtn"]:hover {
+  box-shadow: 0 8px 6px -6px black;
+  cursor: pointer;
+  transition: 100ms;
+}
+
+/* ================== MAIN ================== */
+/* ========= homescreen section ========= */
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#beer-bar-section {
+  margin: 0;
+}
+
+.homescreen-container {
+  background-color: #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  margin-top: 9rem;
+  margin-bottom: 20rem;
+}
+
+h1 {
+  font-size: 4rem;
+  font-weight: 400;
+  margin: 3rem 3rem 1rem 3rem;
+}
+
+.heading-1 {
+  color: red;
+  font-size: 4rem;
+}
+
+.p-text {
+  font-size: 2rem;
+  line-height: 1.5rem;
+  color: black;
+  font-weight: 200;
+  margin: 0 3rem 0;
+}
+
+hr {
+  border: 1;
+  margin: 1rem 3rem;
+}
+
+.home-screen-img {
+  margin: 0 3rem 4rem;
+  padding-bottom: 6rem;
+}
+
+/* ========= beers section ========= */
+
+.beers-main-container {
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  margin-top: 5rem;
+}
+
+.beers-container {
+  /* border: 1px solid; */
+  margin-bottom: 50rem;
+  padding-left: 1px;
+}
+
+.beer-form {
+  display: flex;
+  justify-content: space-around;
+  background-color: #eeeeee;
+  margin-bottom: 5rem;
+  margin-top: 2rem;
+}
+
+#page-size,
+#sort-beers {
+  background-color: red;
+  width: 10rem;
+  height: 4rem;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 5px;
+  color: white;
+}
+
+option {
+  color: black;
+  background-color: white;
+  width: 50rem;
+}
+
+.beers-list {
+  list-style: none;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.beer {
+  border: 1px solid;
+  width: calc(79.8vw / 5);
+  height: 40rem;
+  display: flex;
+}
+
+/* ========= random beer section ========= */
+
+.random-beer-container {
+  border: 1px solid;
+  display: flex;
+  justify-content: space-between;
+  width: 80vw;
+  margin-top: 9rem;
+  margin-bottom: 20rem;
+}
+
+.random-beer-img {
+  border: 1px solid;
+  width: 20rem;
+  flex: 3;
+  margin: 0 5rem;
+}
+
+.random-beer-details {
+  flex: 4;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid;
+  background-color: #e0e0e0;
+  margin-left: 5rem;
+}
+
+.random-beer-name {
+  border: 1px solid;
+  background-color: #e0e0e0;
+  font-size: 2rem;
+  padding: 1rem 2rem;
+}
+
+.random-beer-tagline {
+  font-size: 1.8rem;
+  font-weight: 5 00;
+}
+
+.random-beer-description {
+  border: 1px solid;
+  background-color: #e0e0e0;
+  font-size: 1.8rem;
+  padding: 2rem;
+}
+
+.random-beer-first-breewed {
+  border: 1px solid;
+  background-color: #e0e0e0;
+  font-size: 1.8rem;
+  padding: 2rem;
+}
+
+.random-beer-alcohol {
+  border: 1px solid;
+  background-color: #e0e0e0;
+  font-size: 1.8rem;
+  padding: 2rem;
+}
+
+.random-beer-bitterness {
+  border: 1px solid;
+  background-color: #e0e0e0;
+  font-size: 1.8rem;
+  padding: 2rem;
+}
+
+.random-beer-food-pairing {
+  border: 1px solid;
+  background-color: #e0e0e0;
+  font-size: 1.8rem;
+  padding: 2rem;
+}
+
+.food-pairings-ul {
+  list-style: none;
+  border: 1px solid;
+}
+
+.food-pairings-li {
+  border-bottom: 1px solid;
+}
+
+.food-pairings-li:last-child {
+  border: none;
+}
+
+/* HIDDEN ELEMENT */
+
+.hidden {
+  display: none;
+}

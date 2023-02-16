@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beer bar</title>
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header id="header">
+    <!-- navbar -->
+    <nav class="nav-main sticky" id="nav-main">
+      <div class="nav-ul">
+        <ul class="nav-links">
+          <li class="nav-item"><a class="nav-1" href="#beer-bar-section">Beer Bar</a></li>
+          <li class="nav-item"><a class="nav-2" href="#beers-section">Beers</a></li>
+          <li class="nav-item"><a class="nav-3" href="#random-beer">Random Beer</a></li>
+        </ul>
+      </div>
+      <div class="nav-form">
+        <form class="nav-form" id="search" action="" method="">
+          <input type="search" name="search" id="search-input" value="Search" placeholder="Search">
+          <a target="_self" href="some link"><!-- COME BACK-->
+            <input type="button" name="SearchBtn" id="search-btn" value="Search"></a>
+        </form>
+      </div>
+    </nav>
+  </header>
+
+  <!-- MAIN -->
+  <main class="main-content">
+
+    <!-- home screen section -->
+    <section class="beer-bar-section hidden" id="beer-bar-section ">
+      <!-- add hidden class when showing other sections -->
+      <div class="homescreen-container">
+        <h1>Hello, this is <span class="heading-1">beer</span> world!</h1>
+        <p class="p-text">This is simple beer page, you can get all the informations for beers here.</p>
+        <hr class="homescreen-hr">
+        <img class="home-screen-img" src="/img/homeScreen.png" alt="home scren">
+      </div>
+    </section>
+
+    <!-- beers section -->
+    <section class="beers-section hidden" id="beers-section"> <!-- add hidden class when showing other sections -->
+      <div class="beers-main-container">
+
+        <form class="beer-form">
+          <select name="page-size" id="page-size">
+            <option value="" hidden disabled selected>Page Size</option>
+            <option value="1">show 5 </option>
+            <option value="1">show 10 </option>
+            <option value="1">show 20 </option>
+          </select>
+          <select name="sort-beers" id="sort-beers">
+            <option value="" hidden disabled selected>Sort by</option>
+            <option value="name">Name asc/desc</option>
+            <option value="alcohol">Alcohol % - abv asc/desc</option>
+            <option value="bitterness">Bitterness - ibu asc/desc</option>
+            <option value="production-date">Production Date</option>
+          </select>
+        </form>
+
+        <div class="beers-container">
+          <ul class="beers-list">
+
+            <!-- treba da se listaat so JS -->
+            <li class="beer">
+              <div class="beer-item">
+                <img src="" alt=""> <!-- da se dodade url na slikata i alt preku JS -->
+                <h2 class="beer-name">Beer name</h2>
+                <p class="beer-description">Beer description</p>
+                <button id="beer-details">More details</button>
+              </div>
+            </li>
+            <li class="beer">
+              <div class="beer-item">
+                <img src="" alt=""> <!-- da se dodade url na slikata i alt preku JS -->
+                <h2 class="beer-name">Beer name</h2>
+                <p class="beer-description">Beer description</p>
+                <button id="beer-details">More details</button>
+              </div>
+            </li>
+            <li class="beer">
+              <div class="beer-item">
+                <img src="" alt=""> <!-- da se dodade url na slikata i alt preku JS -->
+                <h2 class="beer-name">Beer name</h2>
+                <p class="beer-description">Beer description</p>
+                <button id="beer-details">More details</button>
+              </div>
+            </li>
+            <li class="beer">
+              <div class="beer-item">
+                <img src="" alt=""> <!-- da se dodade url na slikata i alt preku JS -->
+                <h2 class="beer-name">Beer name</h2>
+                <p class="beer-description">Beer description</p>
+                <button id="beer-details">More details</button>
+              </div>
+            </li>
+
+
+            <li class="beer">
+              <div class="beer-item">
+                <img src="" alt=""> <!-- da se dodade url na slikata i alt preku JS -->
+                <h2 class="beer-name">Beer name</h2>
+                <p class="beer-description">Beer description</p>
+                <button id="beer-details">More details</button>
+              </div>
+            </li>
+            <li class="beer">
+              <div class="beer-item">
+                <img src="" alt=""> <!-- da se dodade url na slikata i alt preku JS -->
+                <h2 class="beer-name">Beer name</h2>
+                <p class="beer-description">Beer description</p>
+                <button id="beer-details">More details</button>
+              </div>
+            </li>
+            <li class="beer">
+              <div class="beer-item">
+                <img src="" alt=""> <!-- da se dodade url na slikata i alt preku JS -->
+                <h2 class="beer-name">Beer name</h2>
+                <p class="beer-description">Beer description</p>
+                <button id="beer-details">More details</button>
+              </div>
+            </li>
+
+
+
+          </ul>
+        </div>
+    </section>
+
+    </div>
+
+    <!-- random beer section -->
+    <section id="random-beer">
+      <div class="random-beer-container"> <!-- add hidden class when showing other sections -->
+        <img class="random-beer-img" src="/img/pngwing.com.png" alt="Beer">
+        <!-- da se dodade url na slikata i alt preku JS -->
+        <div class="random-beer-details">
+          <div class="random-beer-name">
+            <h3 class="random-beer-heading">BEER NAME <span class="random-beer-tagline">Some tagline for beer</span>
+            </h3>
+          </div>
+          <div class="random-beer-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, earum ad!
+            Ad nam velit, laborum voluptates, enim labore explicabo odio mollitia perferendis quis dolor voluptatum,
+            accusamus ab. Dolore eius rerum, at vel error aut blanditiis, qui voluptatum sunt ducimus, architecto iusto
+            aliquam aperiam sapiente dolor accusamus quisquam saepe dicta nesciunt!</div>
+          <div class="random-beer-first-breewed">
+            First breewed 12/2022
+          </div>
+          <div class="random-beer-alcohol">
+            Alcohol
+          </div>
+          <div class="random-beer-bitterness">
+            Bitterness
+          </div>
+          <div class="random-beer-food-pairing">
+            <h3 class="food-pairing-heading">Food Pairing</h3>
+            <div class="food-pairings">
+              <ul class="food-pairings-ul">
+                <li class="food-pairings-li">Food 1</li>
+                <li class="food-pairings-li">Food 2</li>
+                <li class="food-pairings-li">Food 3</li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- FOOTER -->
+  <footer>
+
+  </footer>
+
+
+  <script src="/src/script.js"></script>
+</body>
+
+</html>
