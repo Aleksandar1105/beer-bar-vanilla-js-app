@@ -108,8 +108,8 @@ nav {
   display: flex;
   flex-direction: column;
   width: 80vw;
-  margin-top: 9rem;
-  margin-bottom: 20rem;
+  margin-top: 0m;
+  margin-bottom: 2rem;
 }
 
 h1 {
@@ -138,7 +138,7 @@ hr {
 
 .home-screen-img {
   margin: 0 3rem 4rem;
-  padding-bottom: 6rem;
+  padding-bottom: 4rem;
 }
 
 /* ========= beers section ========= */
@@ -147,7 +147,7 @@ hr {
   display: flex;
   flex-direction: column;
   width: 80vw;
-  margin-top: 5rem;
+  height: 80vh;
 }
 
 .beers-container {
@@ -161,7 +161,6 @@ hr {
   justify-content: space-around;
   background-color: #eeeeee;
   margin-bottom: 5rem;
-  margin-top: 2rem;
 }
 
 #page-size,
@@ -193,7 +192,7 @@ option {
 .beer {
   border: 1px solid;
   width: calc(79.8vw / 5);
-  height: 40rem;
+  height: 35rem;
   display: flex;
 }
 
@@ -205,8 +204,6 @@ option {
   align-items: center;
   width: 80vw;
   height: 80rem;
-  margin-top: 9rem;
-  margin-bottom: 20rem;
 }
 
 .random-beer-img {

@@ -9,9 +9,17 @@ const beerBarBtn = document.querySelector('#beer-bar-btn');
 const beersBtn = document.querySelector('#beers-btn');
 const randomBeerBtn = document.querySelector('#random-beer-btn');
 
+const pageSizeOption = document.querySelector('#page-size');
+const sortBeersOption = document.querySelector('#page-size');
+
 const homeSreenSection = document.querySelector('#beer-bar-section');
 const beersSection = document.querySelector('#beers-section');
 const randomBeerSection = document.querySelector('.random-beer-container');
+
+
+
+let nextUrl = '';
+let previousUrl = '';
 
 // homescreen when opening the page
 homeSreenSection.classList.remove('hidden');
@@ -21,18 +29,27 @@ randomBeerSection.classList.add('hidden');
 
 
 // FETCHING DATA
-async function fetchDataFromApi(url) {
-  const response = await fetch(url);
-  const result = await response.json();
-  return result;
+async function fetchBeers(url) {
+  try {
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch posts: ${response.status}`)
+    }
+
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.log(error)
+  }
 };
 
-const beers = async (url) => {
-  const data = await fetchDataFromApi(url);
+const printBeers = async (url) => {
+  const data = await fetchBeers(url);
   console.log(data);
 }
 
-beers(beersUrl);
+printBeers(beersUrl);
 
 
 
