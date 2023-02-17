@@ -16,12 +16,12 @@
     <nav class="nav-main sticky" id="nav-main">
       <div class="nav-ul">
         <ul class="nav-links">
-          <li class="nav-item"><a class="nav-1" href="#beer-bar-section">Beer Bar</a></li>
-          <li class="nav-item"><a class="nav-2" href="#beers-section">Beers</a></li>
-          <li class="nav-item"><a class="nav-3" href="#random-beer">Random Beer</a></li>
+          <li id="beer-bar-btn" class="nav-item"><a class="nav-1" href="#beer-bar-section">Beer Bar</a></li>
+          <li id="beers-btn" class="nav-item"><a class="nav-2" href="#beers-section">Beers</a></li>
+          <li id="random-beer-btn" class="nav-item"><a class="nav-3" href="#random-beer">Random Beer</a></li>
         </ul>
       </div>
-      <div class="nav-form">
+      <div>
         <form class="nav-form" id="search" action="" method="">
           <input type="search" name="search" id="search-input" value="Search" placeholder="Search">
           <a target="_self" href="some link"><!-- COME BACK-->
@@ -35,7 +35,7 @@
   <main class="main-content">
 
     <!-- home screen section -->
-    <section class="beer-bar-section hidden" id="beer-bar-section ">
+    <section class="beer-bar-section " id="beer-bar-section">
       <!-- add hidden class when showing other sections -->
       <div class="homescreen-container">
         <h1>Hello, this is <span class="heading-1">beer</span> world!</h1>
@@ -46,7 +46,7 @@
     </section>
 
     <!-- beers section -->
-    <section class="beers-section hidden" id="beers-section"> <!-- add hidden class when showing other sections -->
+    <section class="beers-section " id="beers-section"> <!-- add hidden class when showing other sections -->
       <div class="beers-main-container">
 
         <form class="beer-form">
