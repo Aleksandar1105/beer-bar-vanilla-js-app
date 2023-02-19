@@ -20,7 +20,7 @@ html {
 
 /* ========= navbar ========= */
 
-nav {
+#nav-main {
   position: fixed;
   background-color: #e0e0e0;
   display: flex;
@@ -29,6 +29,8 @@ nav {
   padding-top: 5px;
   padding-bottom: 5px;
   width: 80vw;
+  margin-bottom: 5rem;
+  z-index: 2;
 }
 
 .nav-links {
@@ -161,6 +163,7 @@ hr {
   justify-content: space-around;
   background-color: #eeeeee;
   margin-bottom: 5rem;
+  margin-top: 7rem;
 }
 
 #page-size,
@@ -190,10 +193,79 @@ option {
 }
 
 .beer {
-  border: 1px solid;
-  width: calc(79.8vw / 5);
+  border-bottom: 1px solid lightgrey;
+  width: calc(78vw / 5);
   height: 35rem;
   display: flex;
+  flex-direction: column;
+  /* justify-content: flex-start; */
+  align-items: center;
+}
+
+.beer-img-container {
+  margin: 0 auto;
+  max-width: 20rem;
+  max-height: 20rem;
+  padding: 5px;
+}
+
+.beer-item {
+  margin: 1rem auto;
+  max-width: 20rem;
+  max-height: 20rem;
+  padding: 5px;
+}
+
+.beer-img-container > img {
+  position: relative;
+  left: 45%;
+  transform: translateX(-50%);
+  margin: 1rem;
+  max-width: 15rem;
+  max-height: 15rem;
+  padding: 5px;
+}
+
+.beer-name {
+  font-size: 2rem;
+  text-align: center;
+  height: 6rem;
+}
+
+.beer-description-container {
+  font-size: 1.4rem;
+  padding: 0 8px;
+  /* text-align: justify; */
+  height: 6rem;
+}
+
+.beer-details-btn {
+  padding: 8px 1.5rem;
+  border: 1px solid;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  font-size: 1.6rem;
+  font-weight: 100;
+}
+
+.paginaton-buttons {
+  display: flex;
+  justify-content: center;
+  margin: 3rem 0;
+}
+
+#previous-btn,
+#next-btn {
+  padding: 8px 1.5rem;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: white;
+  color: #007bff;
+  font-size: 1.6rem;
+  font-weight: 100;
 }
 
 /* ========= random beer section ========= */
@@ -201,15 +273,14 @@ option {
 .random-beer-container {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  width: 80vw;
-  height: 80rem;
+  align-items: stretch;
+  width: 60vw;
+  height: 70rem;
 }
 
 .random-beer-img {
-  /* border: 1px solid; */
-  width: 50rem;
-  /* flex: 3; */
+  max-width: 50rem;
+  max-height: 70rem;
 }
 
 .random-beer-details {
@@ -226,7 +297,7 @@ option {
   border-bottom: 1px solid;
   border-radius: 3px 3px 0 0;
   background-color: #f1f1f1;
-  font-size: 2rem;
+  font-size: 1.8rem;
   padding: 1rem 2rem;
 }
 
@@ -238,6 +309,7 @@ option {
 .random-beer-description {
   font-size: 1.8rem;
   padding: 2rem;
+  min-height: 30rem;
 }
 
 .random-beer-first-breewed {
