@@ -56,10 +56,10 @@ html {
   color: #626d7c;
 }
 
-.nav-item a:hover {
+/* .nav-item a:hover {
   box-shadow: 0 8px 6px -6px black;
   transition: 100ms;
-}
+} */
 
 .nav-form {
   color: white;
@@ -78,19 +78,20 @@ html {
 }
 
 [name*="SearchBtn"] {
-  border: 1px solid;
+  border: 1px solid lightgrey;
   border-radius: 5px;
   padding: 1rem 3rem;
   color: #626d7c;
   font-weight: 400;
   font-size: 1.6rem;
+  cursor: pointer;
 }
 
-[name*="SearchBtn"]:hover {
+/* [name*="SearchBtn"]:hover {
   box-shadow: 0 8px 6px -6px black;
   cursor: pointer;
   transition: 100ms;
-}
+} */
 
 /* ================== MAIN ================== */
 /* ========= homescreen section ========= */
@@ -284,7 +285,7 @@ option {
 }
 
 .random-beer-details {
-  border: 1px solid;
+  border: 1px solid lightgrey;
   border-radius: 3px;
   display: flex;
   /* flex: 4; */
@@ -294,7 +295,7 @@ option {
 }
 
 .random-beer-name {
-  border-bottom: 1px solid;
+  border-bottom: 1px solid lightgrey;
   border-radius: 3px 3px 0 0;
   background-color: #f1f1f1;
   font-size: 1.8rem;
@@ -338,12 +339,12 @@ option {
 
 .food-pairings-ul {
   list-style: none;
-  border: 1px solid;
+  border: 1px solid lightgrey;
   border-radius: 3px;
 }
 
 .food-pairings-li {
-  border-bottom: 1px solid;
+  border-bottom: 1px solid lightgrey;
   padding: 1rem 2rem;
 }
 
