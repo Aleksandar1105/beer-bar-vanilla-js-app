@@ -54,6 +54,10 @@ async function fetchBeers(url) {
 // https://api.punkapi.com/v2/beers?page=1
 // https://api.punkapi.com/v2/beers?page=2&per_page=80
 
+// PAGINATION
+const pagination = () => {
+
+}
 
 // GET BEERS
 const printBeers = async (beersPerPage) => {
@@ -87,24 +91,14 @@ const printBeers = async (beersPerPage) => {
 
       case 'alcohol': console.log('show alcohol');
         beerList.innerHTML = '';
-        let alcoholAscArray = [];
-        ///////////////////////////// BACK HERE////////////////////
-        let alcoholDescArray = [];
+        let alcoholAscDescArray = [];
         for (const beer of beersArray) {
-          alcoholAscArray.push(beer)
+          alcoholAscDescArray.push(beer)
         }
-        if (alcoholAscArray) {
-          alcoholAscArray.sort((a, b) => b.abv - a.abv);
-          beerListInnerHtml(alcoholAscArray);
-          moreDetailsButton(alcoholAscArray);
-          console.log('Alcohol ascending', alcoholAscArray);
-        } else {
-          alcoholDescArray.sort((b, a) => a.abv - b.abv);
-          beerListInnerHtml(alcoholDescArray);
-          moreDetailsButton(alcoholDescArray);
-          console.log('Alcohol descending', alcoholDescArray);
-        }
-        ///////////////////////////// BACK HERE////////////////////
+        alcoholAscDescArray.sort((a, b) => b.abv - a.abv);
+        beerListInnerHtml(alcoholAscDescArray);
+        moreDetailsButton(alcoholAscDescArray);
+        console.log('Alcohol ascending', alcoholAscDescArray);
         break;
 
       case 'bitterness': console.log('show bitterness');
@@ -132,7 +126,7 @@ const printBeers = async (beersPerPage) => {
         break;
     }
   })
-
+  beerListInnerHtml(beersArray);
   moreDetailsButton(beersArray);
 
 }
