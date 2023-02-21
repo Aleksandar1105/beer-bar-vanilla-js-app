@@ -18,15 +18,16 @@ const homeSreenSection = document.querySelector('#beer-bar-section');
 
 const beersSection = document.querySelector('#beers-section');
 const beerList = document.querySelector('.beers-list');
-const paginationButtons = document.querySelector('.paginaton-buttons');
+const previousButton = document.querySelector('#previous-btn');
+const nextButton = document.querySelector('#next-btn');
 
 const randomBeerSection = document.querySelector('.random-beer-container');
 
 let pageNumber = 1;
-let beersPerPage = 5;
+let beersPerPage = 10;
 
 const baseUrl = `https://api.punkapi.com/v2/beers`;
-const beersUrl = `https://api.punkapi.com/v2/beers?page=${pageNumber}&per_page=${beersPerPage}`;
+let beersUrl = `https://api.punkapi.com/v2/beers?page=${pageNumber}&per_page=${beersPerPage}`;
 const randomBeerUrl = 'https://api.punkapi.com/v2/beers/random';
 
 // homescreen when opening the page
@@ -55,9 +56,7 @@ async function fetchBeers(url) {
 // https://api.punkapi.com/v2/beers?page=2&per_page=80
 
 // PAGINATION
-const pagination = () => {
 
-}
 
 // GET BEERS
 const printBeers = async (beersPerPage) => {
@@ -126,10 +125,10 @@ const printBeers = async (beersPerPage) => {
         break;
     }
   })
-  beerListInnerHtml(beersArray);
+
   moreDetailsButton(beersArray);
 
-}
+};
 
 // Function for creating innerHTML for beers in Beers section
 function beerListInnerHtml(arr) {
@@ -150,7 +149,7 @@ function beerListInnerHtml(arr) {
     </li>
     `
   });
-}
+};
 
 // Function for showing more details for each beer
 const beerDetails = async (beerDetails) => {
@@ -167,7 +166,7 @@ const beerDetails = async (beerDetails) => {
     <div class="random-beer-food-pairing">
       <h3 class="food-pairing-heading">Food Pairing</h3>
       <div class="food-pairings">
-       <ul class="food-pairings-ul">
+        <ul class="food-pairings-ul">
           <li class="food-pairings-li">${beerDetails.food_pairing[0]}</li>
           <li class="food-pairings-li">${beerDetails.food_pairing[1]}</li>
           <li class="food-pairings-li">${beerDetails.food_pairing[2]}</li>
@@ -176,7 +175,7 @@ const beerDetails = async (beerDetails) => {
     </div>
   </div>
   `
-}
+};
 
 // function for More details button
 function moreDetailsButton(arr) {
@@ -191,29 +190,31 @@ function moreDetailsButton(arr) {
       beerDetails(arr[i]);
     })
   }
-}
+};
 
 // ================= EVENT LISTENERS =================
 
 // Beer Bar button
 beerBarBtn.addEventListener('click', function (e) {
   e.preventDefault();
-  homeSreenSection.classList.remove('hidden');
-  beersSection.classList.add('hidden');
-  randomBeerSection.classList.add('hidden');
-})
+  location.reload();
+});
 
 // Beers button
-beersBtn.addEventListener('click', function (e) {
+beersBtn.addEventListener('click', async function (e) {
   e.preventDefault();
-  //pageSizeOption.options[0].innerHTML = 'Page Size'; // BACK LATER
-  // sortBeersOption.options.innerHTML = 'Sort by'; // BACK LATER
+  pageSizeOption.options[0].innerHTML = 'Page Size'; // BACK LATER
+  sortBeersOption.options.innerHTML = 'Sort by'; // BACK LATER
+  console.log(pageSizeOption.options[0].innerHTML)
+
+  await printBeers(10);
   homeSreenSection.classList.add('hidden');
   beersSection.classList.remove('hidden');
-  beerList.classList.add('hidden');
   randomBeerSection.classList.add('hidden');
-  paginationButtons.classList.add('hidden');
-})
+  beerList.classList.remove('hidden');
+  previousButton.classList.add('hidden');
+  nextButton.classList.remove('hidden');
+});
 
 // Random beer button
 randomBeerBtn.addEventListener('click', async function (e) {
@@ -224,7 +225,7 @@ randomBeerBtn.addEventListener('click', async function (e) {
   const randomBeer = await fetchBeers(randomBeerUrl);
   console.log(randomBeer);
   beerDetails(randomBeer[0]);
-})
+});
 
 // On Beers button page there should be pagination, user should be given a choise to pick how much beers should be shown per page, also the user should have a choise to sort beers
 
@@ -236,43 +237,32 @@ pageSizeOption.addEventListener('change', async function (e) {
     // show 5 beers
     case 5:
       beerList.classList.remove('hidden');
+      nextButton.classList.remove('hidden');
       await printBeers(5);
-      paginationButtons.classList.remove('hidden');
       break;
 
     // show 10 beers
     case 10:
       beerList.classList.remove('hidden');
-      paginationButtons.classList.remove('hidden');
+      nextButton.classList.remove('hidden');
       await printBeers(10);
       break;
 
     // show 20 beers
     case 20:
       beerList.classList.remove('hidden');
-      paginationButtons.classList.remove('hidden');
+      nextButton.classList.remove('hidden');
       await printBeers(20);
       break;
   }
-})
 
 
+});
 
-// Sort beers
-// sortBeersOption.addEventListener('change', async function (e) {
-//   e.preventDefault();
-//   switch (sortBeersOption.value) {
-//     case 'name': console.log('show name');
-//       // await fetchBeers(url);
-//       break;
-//     case 'alcohol': console.log('show alcohol');
-//       // await fetchBeers(url);
-//       break;
-//     case 'bitterness': console.log('show bitterness');
-//       // await fetchBeers(url);
-//       break;
-//     case 'production-date': console.log('show production-date');
-//       // await fetchBeers(url);
-//       break;
-//   }
-// })
+  // NEXT BUTTON
+  // if there are more beers, when clicked NEXT print next beers
+  // if there are no more beers, make NEXT button hidden
+
+  // PREVIOUS BUTTON
+  // if there are more beers, when clicked PREVIOUS print previous beers
+  // if there are no more beers, make PREVIOUS button hidden

@@ -56,11 +56,6 @@ html {
   color: #626d7c;
 }
 
-/* .nav-item a:hover {
-  box-shadow: 0 8px 6px -6px black;
-  transition: 100ms;
-} */
-
 .nav-form {
   color: white;
   padding-right: 3rem;
@@ -154,7 +149,6 @@ hr {
 }
 
 .beers-container {
-  /* border: 1px solid; */
   margin-bottom: 50rem;
   padding-left: 1px;
 }
@@ -164,13 +158,12 @@ hr {
   justify-content: space-around;
   background-color: #eeeeee;
   margin-bottom: 5rem;
-  margin-top: 7rem;
 }
 
 #page-size,
 #sort-beers {
   background-color: red;
-  width: 10rem;
+  width: 25rem;
   height: 4rem;
   text-align: center;
   font-size: 1.6rem;
@@ -196,24 +189,15 @@ option {
 .beer {
   border-bottom: 1px solid lightgrey;
   width: calc(78vw / 5);
-  height: 35rem;
+  height: 33rem;
   display: flex;
   flex-direction: column;
-  /* justify-content: flex-start; */
   align-items: center;
 }
 
 .beer-img-container {
   margin: 0 auto;
-  max-width: 20rem;
-  max-height: 20rem;
-  padding: 5px;
-}
-
-.beer-item {
-  margin: 1rem auto;
-  max-width: 20rem;
-  max-height: 20rem;
+  height: 14rem;
   padding: 5px;
 }
 
@@ -222,8 +206,7 @@ option {
   left: 45%;
   transform: translateX(-50%);
   margin: 1rem;
-  max-width: 15rem;
-  max-height: 15rem;
+  height: 12rem;
   padding: 5px;
 }
 
@@ -231,17 +214,18 @@ option {
   font-size: 2rem;
   text-align: center;
   height: 6rem;
+  padding: 0 2rem;
 }
 
 .beer-description-container {
   font-size: 1.4rem;
-  padding: 0 8px;
-  /* text-align: justify; */
+  padding: 0 3rem;
   height: 6rem;
 }
 
 .beer-details-btn {
-  padding: 8px 1.5rem;
+  width: 12rem;
+  height: 4rem;
   border: 1px solid;
   border-radius: 5px;
   cursor: pointer;
@@ -249,6 +233,7 @@ option {
   color: white;
   font-size: 1.6rem;
   font-weight: 100;
+  margin-top: 1.5rem;
 }
 
 .paginaton-buttons {
@@ -259,14 +244,14 @@ option {
 
 #previous-btn,
 #next-btn {
-  padding: 8px 1.5rem;
+  padding: 1rem 3rem;
   border: 1px solid lightgrey;
   border-radius: 5px;
   cursor: pointer;
   background-color: white;
   color: #007bff;
   font-size: 1.6rem;
-  font-weight: 100;
+  font-weight: 500;
 }
 
 /* ========= random beer section ========= */
@@ -288,7 +273,6 @@ option {
   border: 1px solid lightgrey;
   border-radius: 3px;
   display: flex;
-  /* flex: 4; */
   flex-direction: column;
   margin-left: 5rem;
   width: 60rem;
@@ -350,6 +334,19 @@ option {
 
 .food-pairings-li:last-child {
   border: none;
+}
+
+#back-btn {
+  position: absolute;
+  left: 19rem;
+  padding: 1rem 3rem;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  font-size: 1.6rem;
+  font-weight: 500;
 }
 
 /* HIDDEN ELEMENT */
