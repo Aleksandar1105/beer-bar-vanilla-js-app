@@ -23,9 +23,10 @@
       </div>
       <div>
         <form class="nav-form" id="search" action="" method="">
-          <input type="search" name="search" id="search-input" value="Search" placeholder="Search">
-          <a target="_self" href="some link"><!-- COME BACK-->
-            <input type="button" name="SearchBtn" id="search-btn" value="Search"></a>
+          <input type="search" name="search" id="search-input" placeholder="Search">
+          <!-- <a target="" href=""> -->
+          <input type="button" name="SearchBtn" id="search-btn" value="Search">
+          <!-- </a> -->
         </form>
       </div>
     </nav>
@@ -40,7 +41,7 @@
       <div class="homescreen-container">
         <h1>Hello, this is <span class="heading-1">beer</span> world!</h1>
         <p class="p-text">This is simple beer page, you can get all the informations for beers here.</p>
-        <hr class="homescreen-hr">
+        <hr>
         <img class="home-screen-img" src="/img/homeScreen.png" alt="home scren">
       </div>
     </section>
@@ -50,7 +51,7 @@
       <div class="beers-main-container">
 
         <form class="beer-form">
-          <select name="page-size" id="page-size">
+          <select value="Page Size" name="page-size" id="page-size">
             <option value="" hidden disabled selected>Page Size</option>
             <option value="5">show 5 </option>
             <option value="10">show 10 </option>
@@ -58,33 +59,26 @@
           </select>
           <select name="sort-beers" id="sort-beers">
             <option value="" hidden disabled selected>Sort by</option>
-            <option value="name">Name asc/desc</option>
-            <option value="alcohol">Alcohol % - abv asc/desc</option>
-            <option value="bitterness">Bitterness - ibu asc/desc</option>
-            <option value="production-date">Production Date</option>
+            <option value="name-asc">Name asc</option>
+            <option value="name-desc">Name des</option>
+            <option value="alcohol-asc">Alcohol % - abv asc</option>
+            <option value="alcohol-desc">Alcohol % - abv des</option>
+            <option value="bitterness-asc">Bitterness - ibu asc</option>
+            <option value="bitterness-desc">Bitterness - ibu desc</option>
+            <option value="production-date-asc">Production Date asc</option>
+            <option value="production-date-desc">Production Date desc</option>
           </select>
         </form>
 
         <div class="beers-container">
           <ul class="beers-list">
 
-            <!-- treba da se listaat so JS -->
-            <!-- <li class="beer">
-              <div class="beer-img">
-                <img src="" alt="Test test">
-              </div>
-              <div class="beer-details">
-                <h2 class="beer-name">Beer name</h2>
-                <p class="beer-description">Beer description</p>
-                <button id="beer-details-btn">More details</button>
-              </div>
-            </li> -->
-
           </ul>
           <div class="paginaton-buttons">
             <button id="previous-btn">Previous</button>
             <button id="next-btn">Next</button>
           </div>
+
         </div>
     </section>
 
@@ -92,10 +86,13 @@
 
     <!-- random beer section -->
     <section id="random-beer">
+      <button class="back-btn hidden" id="back-btn">Back</button>
       <div class="random-beer-container "> <!-- add hidden class when showing other sections -->
 
       </div>
     </section>
+
+
   </main>
   <!-- FOOTER -->
   <footer>
@@ -103,7 +100,8 @@
   </footer>
 
 
-  <script src="/src/script.js"></script>
+  <!-- <script src="/src/script.js"></script> -->
+  <script src="/src/script copy.js"></script>
 </body>
 
 </html>

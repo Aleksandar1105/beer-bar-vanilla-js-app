@@ -30,6 +30,8 @@ html {
   padding-bottom: 5px;
   width: 80vw;
   margin-bottom: 5rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
   z-index: 2;
 }
 
@@ -40,7 +42,6 @@ html {
 
 .nav-item a {
   display: inline-block;
-  padding-left: 3rem;
   text-decoration: none;
   color: black;
   font-size: 1.6rem;
@@ -52,7 +53,17 @@ html {
   font-size: 1.8em;
 }
 
+/* .nav-links .nav-item:nth-of-type(1) a:hover {
+  border: 1px solid lightgrey;
+} */
+
+.nav-links .nav-item:nth-of-type(2) a {
+  margin-left: 3rem;
+  color: #626d7c;
+}
+
 .nav-links .nav-item:nth-of-type(3) a {
+  margin-left: 3rem;
   color: #626d7c;
 }
 
@@ -130,7 +141,7 @@ h1 {
 }
 
 hr {
-  border: 1;
+  border: 1px;
   margin: 1rem 3rem;
 }
 
@@ -149,8 +160,10 @@ hr {
 }
 
 .beers-container {
-  margin-bottom: 50rem;
-  padding-left: 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .beer-form {
@@ -163,7 +176,7 @@ hr {
 #page-size,
 #sort-beers {
   background-color: red;
-  width: 25rem;
+  width: 20rem;
   height: 4rem;
   text-align: center;
   font-size: 1.6rem;
@@ -188,7 +201,9 @@ option {
 
 .beer {
   border-bottom: 1px solid lightgrey;
-  width: calc(78vw / 5);
+  margin: 0 1.3rem;
+  /* width: calc(78vw / 5); */
+  width: 28rem;
   height: 33rem;
   display: flex;
   flex-direction: column;
@@ -220,7 +235,7 @@ option {
 .beer-description-container {
   font-size: 1.4rem;
   padding: 0 3rem;
-  height: 6rem;
+  height: 6.5rem;
 }
 
 .beer-details-btn {
@@ -292,28 +307,28 @@ option {
 }
 
 .random-beer-description {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   padding: 2rem;
   min-height: 30rem;
 }
 
 .random-beer-first-breewed {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   padding: 0 2rem;
 }
 
 .random-beer-alcohol {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   padding: 0 2rem;
 }
 
 .random-beer-bitterness {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   padding: 0 2rem 2rem;
 }
 
 .random-beer-food-pairing {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   padding: 0 2rem 2rem;
 }
 

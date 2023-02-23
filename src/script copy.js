@@ -3,18 +3,23 @@
 const beerBarBtn = document.querySelector('#beer-bar-btn');
 const beersBtn = document.querySelector('#beers-btn');
 const randomBeerBtn = document.querySelector('#random-beer-btn');
-const pageSizeOption = document.querySelector('#page-size');
-const sortBeersOption = document.querySelector('#sort-beers');
+
 const homeSreenSection = document.querySelector('#beer-bar-section');
 const beersSection = document.querySelector('#beers-section');
+const randomBeerSection = document.querySelector('.random-beer-container');
+
 const beerList = document.querySelector('.beers-list');
+const sortBeersOption = document.querySelector('#sort-beers');
+const pageSizeOption = document.querySelector('#page-size');
 const previousButton = document.querySelector('#previous-btn');
 const nextButton = document.querySelector('#next-btn');
 const backButton = document.querySelector('#back-btn');
-const randomBeerSection = document.querySelector('.random-beer-container');
+let searchButton = document.querySelector('#search-btn');
+let searchInput = document.querySelector('#search-input');
 
 let pageNumber = 1;
 let beersPerPage = 10;
+let beerId = [];
 
 const baseUrl = `https://api.punkapi.com/v2/beers`;
 const randomBeerUrl = 'https://api.punkapi.com/v2/beers/random';
@@ -26,11 +31,9 @@ randomBeerSection.classList.add('hidden');
 async function fetchBeers(url) {
   try {
     const response = await fetch(url);
-
     if (!response.ok) {
       throw new Error(`Failed to fetch posts: ${response.status}`)
-    }
-
+    };
     const result = await response.json();
     return result;
   } catch (error) {
@@ -52,23 +55,46 @@ const printBeers = async (beersPerPage) => {
 };
 
 // Function for creating innerHTML for beers in Beers section
-function beerListInnerHtml(arr) {
-  arr.forEach(beer => {
+function beerListInnerHtml(beers) {
+  beers.forEach(beer => {
     beerList.innerHTML += `
+      <li class="beer">
+        <div class="beer-img-container">
+          <img src="${beer.image_url}" alt="${beer.name}">
+        </div>
+        <div class="beer-name-container">  
+          <h2 class="beer-name">${beer.name}</h2>
+        </div>
+        <div class="beer-description-container">  
+          <p class="beer-description">${beer.description.substr(0, 80)}...</p>
+        </div>
+        <button class="beer-details-btn">More details</button>
+        <hr>
+      </li>
+      `
+  });
+};
+
+// Function for searching beers with url
+async function searchedBeerWithUrl(url) {
+  let getSingleBeerWithUrl = await fetch(url)
+  let beer = await getSingleBeerWithUrl.json();
+  console.log(beer[0])
+  beerList.innerHTML += `
     <li class="beer">
       <div class="beer-img-container">
-        <img src="${beer.image_url}" alt="${beer.name}">
+        <img src="${beer[0].image_url}" alt="${beer[0].name}">
       </div>
       <div class="beer-name-container">  
-        <h2 class="beer-name">${beer.name}</h2>
+        <h2 class="beer-name">${beer[0].name}</h2>
       </div>
       <div class="beer-description-container">  
-        <p class="beer-description">${beer.description.substr(0, 80)}...</p>
+        <p class="beer-description">${beer[0].description.substr(0, 80)}...</p>
       </div>
       <button class="beer-details-btn">More details</button>
+      <hr>
     </li>
     `
-  });
 };
 
 // Function for showing more details for each beer
@@ -124,6 +150,7 @@ function moreDetailsButton(arr) {
 // Function for sorting the beers
 async function sortBeers(option) {
   let beersArray = await fetchBeers(`${baseUrl}?page=${pageNumber}&per_page=${beersPerPage}`);
+
   if (option === "name-asc") {
     beersArray = beersArray.sort((a, b) => a.name.localeCompare(b.name));
     console.log(beersArray)
@@ -152,31 +179,68 @@ async function sortBeers(option) {
     beersArray = beersArray.sort((a, b) => {
       let dateA = a.first_brewed.split("/");
       let dateB = b.first_brewed.split("/");
-      console.log(dateA)
-      console.log(dateB)
       return new Date(`${dateA[1]}-${dateA[0]}-01`) - new Date(`${dateB[1]}-${dateB[0]}-01`);
     });
     console.log(beersArray)
+  } else if (option === "production-date-desc") {
+    beersArray = beersArray.sort((a, b) => {
+      let dateA = a.first_brewed.split("/");
+      let dateB = b.first_brewed.split("/");
+      return new Date(`${dateB[1]}-${dateB[0]}-01`) - new Date(`${dateA[1]}-${dateA[0]}-01`);
+    });
+    console.log(beersArray)
   }
-  beersArray = beersArray.sort((a, b) => {
-    let dateA = a.first_brewed.split("/");
-    let dateB = b.first_brewed.split("/");
-    return new Date(`${dateB[1]}-${dateB[0]}-01`) - new Date(`${dateA[1]}-${dateA[0]}-01`);
-  });
-  console.log(beersArray)
 
   beerList.innerHTML = '';
   beerListInnerHtml(beersArray);
 }
 
-// Event listener for the sort beers option
-sortBeersOption.addEventListener('change', function (e) {
-  e.preventDefault();
-  const selectedOption = this.value;
-  sortBeers(selectedOption)
-})
+// Function / search beers
+async function searchBeers(searchedTerm) {
+  beerId = 1;
+  let searchedBeer = '';
+
+  for (let i = 1; i <= 325; i++) {
+    let searchTerm = await fetch(`https://api.punkapi.com/v2/beers/${i}`);
+    let singleBeer = await searchTerm.json();
+    let searchedUrl = singleBeer.href = `https://api.punkapi.com/v2/beers/${i}`;
+    searchedBeer = singleBeer[0].name;
+    if (searchedBeer.toLowerCase().includes(searchedTerm.toLowerCase())) {
+      await searchedBeerWithUrl(searchedUrl);
+    }
+  }
+}
+
+// Function for clearing the search page
+function clearSearchPage() {
+  beerList.innerHTML = '';
+  homeSreenSection.classList.add('hidden');
+  beersSection.classList.remove('hidden');
+  randomBeerSection.classList.add('hidden');
+  beerList.classList.remove('hidden');
+  previousButton.classList.add('hidden');
+  nextButton.classList.add('hidden');
+  backButton.classList.add('hidden');
+}
 
 // ================= EVENT LISTENERS =================
+
+//Search button 
+searchButton.addEventListener('click', function (e) {
+  const searchedTerm = searchInput.value;
+  clearSearchPage()
+  searchBeers(searchedTerm);
+});
+
+//Search input
+searchInput.addEventListener('keydown', function (e) {
+  const searchedTerm = searchInput.value;
+  clearSearchPage()
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    searchBeers(searchedTerm);
+  }
+});
 
 // Beer Bar button
 beerBarBtn.addEventListener('click', function (e) {
@@ -246,48 +310,12 @@ pageSizeOption.addEventListener('change', async function (e) {
   }
 });
 
-// // sort beers
-// sortBeersOption.addEventListener('change', async function (e) {
-//   e.preventDefault();
-
-//   switch (sortBeersOption.value) {
-
-//     case 'name-asc':
-//       beersArray = beersArray.sort((a, b) => a.name.localeCompare(b.name));
-//       await printBeers(beersArray);
-//       break;
-
-//     case 'name-desc':
-//       beersArray = beersArray.sort((b, a) => b.name.localeCompare(a.name));
-//       await printBeers(beersArray);
-//       break;
-
-//     case 'alcohol-asc':
-//       beersArray = beersArray.sort((a, b) => b.abv - a.abv);
-//       await printBeers(beersArray);
-//       break;
-
-//     case 'alcohol-desc':
-//       beersArray = beersArray.sort((b, a) => a.abv - b.abv);
-//       await printBeers(beersArray);
-//       break;
-
-//     case 'bitterness-asc':
-//       beersArray = beersArray.sort((a, b) => b.ibu - a.ibu);
-//       await printBeers(beersArray);
-//       break;
-
-//     case 'bitterness-desc':
-//       beersArray = beersArray.sort((b, a) => a.ibu - b.ibu);
-//       await printBeers(beersArray);
-//       break;
-
-//     case 'production-date': console.log('show production-date');
-//       beersArray = beersArray.sort((a, b) => b.first_brewed - a.first_brewed);
-//       await printBeers(beersArray);
-//       break;
-//   }
-// });
+// Event listener for the sort beers option
+sortBeersOption.addEventListener('change', function (e) {
+  e.preventDefault();
+  const selectedOption = this.value;
+  sortBeers(selectedOption)
+})
 
 // Event listener for next button click
 nextButton.addEventListener('click', async function (e) {
