@@ -23,6 +23,7 @@ html {
 #nav-main {
   position: fixed;
   background-color: #e0e0e0;
+  border-radius: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -44,27 +45,44 @@ html {
   display: inline-block;
   text-decoration: none;
   color: black;
-  font-size: 1.6rem;
-  font-weight: 400;
+  font-size: 1.8rem;
+  font-weight: 300;
+  width: 12rem;
+  text-align: center;
+  margin-right: 3rem;
+  transition: 100ms;
+  transform: translateY(0);
+}
+
+.nav-item a:hover {
+  color: #0066cc;
 }
 
 .nav-links .nav-item:nth-of-type(1) a {
-  font-weight: 500;
-  font-size: 1.8em;
+  font-weight: 300;
+  font-size: 2em;
 }
 
-/* .nav-links .nav-item:nth-of-type(1) a:hover {
-  border: 1px solid lightgrey;
-} */
+.nav-links .nav-item:nth-of-type(1) a:hover {
+  font-weight: 500;
+}
 
 .nav-links .nav-item:nth-of-type(2) a {
-  margin-left: 3rem;
   color: #626d7c;
+}
+
+.nav-links .nav-item:nth-of-type(2) a:hover {
+  font-weight: 500;
+  color: #0066cc;
 }
 
 .nav-links .nav-item:nth-of-type(3) a {
-  margin-left: 3rem;
   color: #626d7c;
+}
+
+.nav-links .nav-item:nth-of-type(3) a:hover {
+  font-weight: 500;
+  color: #0066cc;
 }
 
 .nav-form {
@@ -83,14 +101,33 @@ html {
   font-size: 1.6rem;
 }
 
+[placeholder*="Search"]:focus {
+  outline: none;
+}
+
 [name*="SearchBtn"] {
-  border: 1px solid lightgrey;
-  border-radius: 5px;
-  padding: 1rem 3rem;
-  color: #626d7c;
-  font-weight: 400;
-  font-size: 1.6rem;
+  width: 12rem;
+  height: 4rem;
+  color: #000000;
+  background-color: lightgrey;
+  border: solid darkgray 1px;
+  border-radius: 5px 5px 5px 5px;
+  transition: 100ms;
+  transform: translateY(0);
   cursor: pointer;
+  font-size: 1.6rem;
+  font-weight: 100;
+}
+
+[name*="SearchBtn"]:hover {
+  color: #ffffff;
+  background-color: #0066cc;
+  border: solid #0066cc 1px;
+}
+
+#back-btn:hover {
+  color: #0066cc;
+  background-color: #ffffff;
 }
 
 /* [name*="SearchBtn"]:hover {
@@ -119,6 +156,7 @@ html {
   width: 80vw;
   margin-top: 0m;
   margin-bottom: 2rem;
+  border-radius: 5px;
 }
 
 h1 {
@@ -184,6 +222,16 @@ hr {
   border: none;
   border-radius: 5px;
   color: white;
+  cursor: pointer;
+  transition: 100ms;
+  transform: translateY(0);
+}
+
+#page-size:hover,
+#sort-beers:hover {
+  background-color: #ffffff;
+  color: red;
+  border: 1px solid red;
 }
 
 option {
@@ -238,17 +286,36 @@ option {
   height: 6.5rem;
 }
 
-.beer-details-btn {
+/* .beer-details-btn {
   width: 12rem;
   height: 4rem;
   border: 1px solid;
   border-radius: 5px;
   cursor: pointer;
-  background-color: #007bff;
+  background-color: #0066cc;
   color: white;
   font-size: 1.6rem;
   font-weight: 100;
   margin-top: 1.5rem;
+} */
+
+.beer-details-btn {
+  width: 12rem;
+  height: 4rem;
+  color: #ffffff;
+  background-color: #0066cc;
+  border: solid #0066cc 1px;
+  border-radius: 5px 5px 5px 5px;
+  transition: 100ms;
+  transform: translateY(0);
+  cursor: pointer;
+  font-size: 1.6rem;
+  font-weight: 100;
+}
+
+.beer-details-btn:hover {
+  color: #0066cc;
+  background-color: #ffffff;
 }
 
 .paginaton-buttons {
@@ -257,16 +324,60 @@ option {
   margin: 3rem 0;
 }
 
-#previous-btn,
-#next-btn {
+.previous-btn {
+  color: #0066cc;
+  background-color: #ffffff;
+  border: solid #0066cc 1px;
+  border-radius: 5px 0 0 5px;
+  transition: 100ms;
+  transform: translateY(0);
   padding: 1rem 3rem;
-  border: 1px solid lightgrey;
-  border-radius: 5px;
   cursor: pointer;
-  background-color: white;
-  color: #007bff;
   font-size: 1.6rem;
-  font-weight: 500;
+  font-weight: 100;
+}
+
+.previous-btn:hover {
+  background-color: #0066cc;
+  color: #ffffff;
+}
+
+.next-btn {
+  color: #0066cc;
+  background-color: #ffffff;
+  border: solid #0066cc 1px;
+  border-radius: 0 5px 5px 0;
+  transition: 100ms;
+  transform: translateY(0);
+  padding: 1rem 3rem;
+  cursor: pointer;
+  font-size: 1.6rem;
+  font-weight: 100;
+}
+
+.next-btn:hover {
+  background-color: #0066cc;
+  color: #ffffff;
+}
+
+.disabled-previous-btn {
+  color: #0066cc;
+  background-color: #ffffff;
+  border: solid #0066cc 1px;
+  border-radius: 5px 0 0 5px;
+  padding: 1rem 3rem;
+  font-size: 1.6rem;
+  font-weight: 100;
+}
+
+.disabled-next-btn {
+  color: #0066cc;
+  background-color: #ffffff;
+  border: solid #0066cc 1px;
+  border-radius: 0 5px 5px 0;
+  padding: 1rem 3rem;
+  font-size: 1.6rem;
+  font-weight: 100;
 }
 
 /* ========= random beer section ========= */
@@ -354,14 +465,22 @@ option {
 #back-btn {
   position: absolute;
   left: 19rem;
-  padding: 1rem 3rem;
-  border: 1px solid lightgrey;
-  border-radius: 5px;
+  width: 12rem;
+  height: 4rem;
+  color: #ffffff;
+  background-color: #0066cc;
+  border: solid #0066cc 1px;
+  border-radius: 5px 5px 5px 5px;
+  transition: 100ms;
+  transform: translateY(0);
   cursor: pointer;
-  background-color: #007bff;
-  color: white;
   font-size: 1.6rem;
-  font-weight: 500;
+  font-weight: 100;
+}
+
+#back-btn:hover {
+  color: #0066cc;
+  background-color: #ffffff;
 }
 
 /* HIDDEN ELEMENT */
