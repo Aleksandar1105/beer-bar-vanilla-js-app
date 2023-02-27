@@ -1,6 +1,6 @@
 # Beer bar
 ## Information about all the beers in the world.
-
+LIVE PREVIEW: https://beer-bar-aleksandartodoroski.netlify.app/
 # Idea
 This project should be all about beer.
 We will offer the user beer information and if the user hesitate what beer to drink tonight we should offer him a random beer selection.
