@@ -12,7 +12,9 @@ const previousButton = document.querySelector('#previous-btn');
 const nextButton = document.querySelector('#next-btn');
 const backButton = document.querySelector('#back-btn');
 const searchButton = document.querySelector('#search-btn');
-const searchInput = document.querySelector('#search-input');
+let searchInput = document.querySelector('#search-input');
+let show0OptionPageSize = document.querySelector('option[value="Page Size"]');
+let show0OptionSortBy = document.querySelector('option[value="Sort by"]');
 
 let pageNumber = 1;
 let beersPerPage = 10;
@@ -144,33 +146,41 @@ const sortBeers = async (option) => {
   let beersArray = await fetchBeers(`${baseUrl}?page=${pageNumber}&per_page=${beersPerPage}`);
 
   if (option === "name-asc") {
+    console.log(sortBeersOption.options.innerHTML) // DA SE SREDI
     beersArray = beersArray.sort((a, b) => a.name.localeCompare(b.name));
+    show0OptionSortBy.selected = true;
     console.log(beersArray)
   }
   else if (option === "name-desc") {
     beersArray = beersArray.sort((a, b) => b.name.localeCompare(a.name));
+    show0OptionSortBy.selected = true;
     console.log(beersArray)
   }
   else if (option === "alcohol-asc") {
     beersArray = beersArray.sort((a, b) => a.abv - b.abv);
+    show0OptionSortBy.selected = true;
     console.log(beersArray)
   }
   else if (option === "alcohol-desc") {
     beersArray = beersArray.sort((a, b) => b.abv - a.abv);
+    show0OptionSortBy.selected = true;
     console.log(beersArray)
   }
   else if (option === "bitterness-asc") {
     beersArray = beersArray.sort((a, b) => a.ibu - b.ibu);
+    show0OptionSortBy.selected = true;
     console.log(beersArray)
   }
   else if (option === "bitterness-desc") {
     beersArray = beersArray.sort((a, b) => b.ibu - a.ibu);
+    show0OptionSortBy.selected = true;
     console.log(beersArray)
   }
   else if (option === "production-date-asc") {
     beersArray = beersArray.sort((a, b) => {
       let dateA = a.first_brewed.split("/");
       let dateB = b.first_brewed.split("/");
+      show0OptionSortBy.selected = true;
       return new Date(`${dateA[1]}-${dateA[0]}-01`) - new Date(`${dateB[1]}-${dateB[0]}-01`);
     });
     console.log(beersArray)
@@ -178,6 +188,7 @@ const sortBeers = async (option) => {
     beersArray = beersArray.sort((a, b) => {
       let dateA = a.first_brewed.split("/");
       let dateB = b.first_brewed.split("/");
+      show0OptionSortBy.selected = true;
       return new Date(`${dateB[1]}-${dateB[0]}-01`) - new Date(`${dateA[1]}-${dateA[0]}-01`);
     });
     console.log(beersArray)
@@ -220,14 +231,13 @@ const clearSearchPage = () => {
 // Beer Bar button / homescreen section
 beerBarBtn.addEventListener('click', function (e) {
   e.preventDefault();
+  searchInput.value = '';
   location.reload();
 });
 
 // Beers button / beers section
 beersBtn.addEventListener('click', async function (e) {
   e.preventDefault();
-  pageSizeOption.options[0].innerHTML = 'Page Size'; // BACK LATER
-  sortBeersOption.options.innerHTML = 'Sort by'; // BACK LATER
   await printBeers(10);
   homeSreenSection.classList.add('hidden');
   beersSection.classList.remove('hidden');
@@ -238,6 +248,7 @@ beersBtn.addEventListener('click', async function (e) {
   previousButton.classList.add('disabled-previous-btn');
   nextButton.classList.remove('hidden');
   backButton.classList.add('hidden');
+  searchInput.value = '';
 });
 
 // Random beer button / random beer section
@@ -250,6 +261,7 @@ randomBeerBtn.addEventListener('click', async function (e) {
   const randomBeer = await fetchBeers(randomBeerUrl);
   backButton.classList.remove('hidden');
   beerDetails(randomBeer[0]);
+  searchInput.value = '';
 });
 
 // Show beers per page size
@@ -259,18 +271,21 @@ pageSizeOption.addEventListener('change', async function (e) {
     case 5:
       beerList.classList.remove('hidden');
       nextButton.classList.remove('hidden');
+      show0OptionPageSize.selected = true;
       await printBeers(5);
       beersPerPage = 5;
       break;
     case 10:
       beerList.classList.remove('hidden');
       nextButton.classList.remove('hidden');
+      show0OptionPageSize.selected = true;
       await printBeers(10);
       beersPerPage = 10;
       break;
     case 20:
       beerList.classList.remove('hidden');
       nextButton.classList.remove('hidden');
+      show0OptionPageSize.selected = true;
       await printBeers(20);
       beersPerPage = 20;
       break;
@@ -330,17 +345,30 @@ backButton.addEventListener('click', async function (e) {
 
 // Event listener for search button 
 searchButton.addEventListener('click', function (e) {
-  const searchedTerm = searchInput.value;
-  clearSearchPage()
-  searchBeers(searchedTerm);
+  e.preventDefault();
+  let searchedTerm = searchInput.value;
+  clearSearchPage();
+  if (searchedTerm === '') {
+    console.log('You must enter at least one character!');
+    return
+  } else {
+    searchBeers(searchedTerm);
+    searchInput.value = '';
+  }
 });
 
 // Event listener for search input
 searchInput.addEventListener('keydown', function (e) {
-  const searchedTerm = searchInput.value;
+  let searchedTerm = searchInput.value;
   clearSearchPage()
   if (e.key === 'Enter') {
     e.preventDefault();
-    searchBeers(searchedTerm);
+    if (searchedTerm === '') {
+      console.log('You must enter at least one character!');
+      return
+    } else {
+      searchBeers(searchedTerm);
+      searchInput.value = '';
+    }
   }
 });
